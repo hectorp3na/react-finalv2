@@ -16,7 +16,7 @@ const Home = () => {
           <input type="text" placeholder="Search by Name" />
         </a>
         <a href="./user.html">
-          <button className="not-loading">
+        
             <i className="fa-solid fa-magnifying-glass">
             <FontAwesomeIcon
               className="not-loading"
@@ -25,7 +25,7 @@ const Home = () => {
               onClick=""
             />
             </i>
-          </button>
+
         </a>
       </div>
       <div className="img-building">
