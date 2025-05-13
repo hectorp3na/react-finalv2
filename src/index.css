@@ -1,13 +1,473 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    font-family: sans-serif;
+    margin: 0;
+    box-sizing: border-box;
+    background-color: #FFF;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+#landing-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.title{
+    font-size: 50px;
+    text-align: left;
+    max-width: 730px;
+    font-weight: 700;
+    line-height: 1.25;
+    color: #02439f;
+    margin-bottom: 30px;
+    display: block;
+}
+
+.description {
+    font-size: 30px;
+}
+
+.logo img {
+    height: 40px;
+    width: auto;
+}
+
+.not-loading {
+    margin-left: 25px;
+    width: 120px;
+    height: 65px;
+}
+
+.not-loading:hover {
+    background-color: #5a84de;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 18px;
+}
+
+.navlinks li {
+    list-style: none;
+    font-size: 18px;
+    font-weight: 600 !important;
+    cursor: pointer;
+    padding: 0 30px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+}
+
+.navlinks {
+    display: flex;
+    align-items: center;
+}
+
+.navlinks li:hover { 
+    color: #02439f;
+}
+
+.input-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    max-width: 500px;
+    width: 100%;
+    position: relative;
+
+}
+
+.input-wrapper input {
+    padding: 15px 50px 15px 20px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    flex-grow: 1;
+    font-size: 18px !important;
+    height: 70px;
+    line-height: 40px;
+    outline: none;
+    padding-left: 25px;
+    width: 500px
+
+}
+
+.input-wrapper button {
+    padding: 15px 25px;
+    background-color: #02439f;
+    color: white;
+    border: none;
+    border-radius: 20px 20px 20px 20px;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+.input-wrapper button i {
+    background-color: transparent;
+}
+
+.building-logo {
+    width: 600px;    
+}
+
+li.contact-btn {
+    display: flex;
+    cursor: pointer;
+    max-height: 48px;
+    min-height: 48px;
+    padding: 12px 40px;
+    align-items: center;
+    border: 2px #02439f;
+    border-radius: 50px;
+    background-color: #02439f !important;
+    font-size: 18px;
+    color: white;
+   
+    letter-spacing: 1px;
+
+    transition: none .35s ease;
+}
+
+li.contact-btn:hover {
+    background-color: #5a84de !important;
+}
+
+
+
+/* 
+
+USER.HTML 
+
+*/
+
+
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+
+* {
+
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    
+    }
+    
+    
+    body {
+    
+    padding-top: 0;
+    
+    }
+    
+    
+    /* Background Image */
+    
+    .overlay {
+
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-image: url("./assets/d6ce7f68-0c42-4bfc-88eb-fed8b3f2d85a.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    }
+    
+    
+    .overlay::before {
+    
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.7);
+    z-index: 1;
+    
+    }
+    
+    
+    /* Navbar */
+    
+    .navbar-u {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: transparent;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    width: 100%;
+    z-index: 2;
+
+    }
+    
+    
+    .logo img {
+    
+    height: 40px;
+    width: auto;
+    background-color: transparent;
+    }
+
+    .logo {
+        background-color: transparent;
+    }
+
+    
+
+    .navlinks {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    background-color: transparent;
+    
+    }
+    
+    
+    .navlinks li {
+    display: inline-block;
+    background-color: transparent;
+    
+    }
+    
+    
+    .navlinks a {
+    
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+    transition: color 0.3s ease;
+    background-color: transparent;
+    
+    
+    }
+    
+    .navlinks a.active {
+    
+    color: #02439f;
+    background-color: transparent;
+    font-size: 18px;
+
+    }
+    
+    
+    .navlinks a:hover {
+    color: #02439f;
+    
+    }
+    
+    .btn-contact {
+    
+    display: inline-block;
+
+    border-radius: 50px;
+
+    color: #02439f  !important;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 1px;
+
+    transition: all 0.35s ease;
+    
+    }
+
+    
+    
+    /* Header Section */
+    
+    .second-page {
+    
+    text-align: center;
+    padding: 80px 20px;
+    position: relative;
+    z-index: 2;
+    background-color: transparent;
+    }
+
+    .second-page .page--title {
+        background-color: transparent;
+    }
+    
+    
+    .page--title {
+    
+    font-size: 50px;
+    text-align: center;
+    font-weight: 700;
+    line-height: 1.25;
+    color: #02439f;
+    margin-bottom: 30px;
+    
+    }
+        
+    
+    /* Search Container */
+    
+    .search-container {
+
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: transparent;
+}
+    
+    
+    .search-input {
+    
+    width: 100%;
+    padding: 15px 50px 15px 20px;
+    border-radius: 50px;
+    border: 2px solid #e0e0e0;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s;
+
+    }
+    
+    
+    .search-input:focus {
+    border-color: #02439f;
+    
+    }
+    
+    
+    .search-input::placeholder {
+    color: #aaa;
+
+    }
+    
+    
+    .search-icon {
+    
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #02439f;
+    cursor: pointer;
+    }
+
+    .search-icon:hover {
+        color: #5a84de;
+    }
+    
+    
+    /* Preserving other styles from your original code if needed */
+    
+    
+    
+    /* Landing page styles */
+    
+    #landing-page {
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    }
+    
+    
+    .building-logo {
+    width: 600px;
+
+    }
+    
+    
+    .input-wrapper {
+    
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    max-width: 500px;
+    width: 100%;
+    position: relative;
+
+    }
+    
+    
+    .input-wrapper input {
+    
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 25px 25px 25px 25px;
+    flex-grow: 1;
+    font-size: 18px;
+
+    }
+    
+    
+    .input-wrapper button {
+    
+    padding: 15px 25px;
+    background-color: #02439f;
+    color: white;
+    border: none;
+    border-radius: 20px 20px 20px 20px;
+    cursor: pointer; 
+    font-size: 24px;
+
+    }
+    
+    .input-wrapper button i {
+    background-color: transparent;
+
+}
+
+#data-container {
+    position: relative;
+    z-index: 6;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 1rem;
+
+
+}
+
+#data-container img {
+    height: 40vh;
+    width: 40vh;
+}
+
+
+
+.movie__header {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
+    background-color: transparent;
+}
+
+.section__title {
+    margin-bottom: 0;
+    background: transparent;
+    font-size: 32px;
+
+}
+
+.blue {
+    background: transparent;
+    color: #02439f;
+}
+
+#filter {
+    color: white;
+    background-color: #02439f;
+    border-radius: 50px;
+    padding: 5px;
 }
