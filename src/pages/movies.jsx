@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
-  const [searchMovie, setSearchMovie] = useState("fast");
+  const [searchMovie, setSearchMovie] = useState("");
   const [sortOrder, setSortOrder] = useState("");
 
 
