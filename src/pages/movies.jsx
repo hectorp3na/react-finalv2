@@ -89,9 +89,10 @@ const Movies = () => {
           {displayedMovies.length > 0 ? (
             displayedMovies.map((movie) => (
               <div className="movie" key={movie.imdbID}>
+                 <h3>{movie.Title}</h3>
+                 <p>{movie.Year}</p>
                 <img src={movie.Poster} alt={movie.Title} />
-                <h3>{movie.Title}</h3>
-                <p>{movie.Year}</p>
+               
               </div>
             ))
           ) : (
