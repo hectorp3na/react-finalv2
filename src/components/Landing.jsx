@@ -8,7 +8,7 @@ const Landing = () => {
   const [searchMovie, setSearchMovie] = useState("");
   const navigate = useNavigate();
 
-  function handleSearch() {
+  function handleSearch(event) {
     if (searchMovie.trim()) {
       navigate(`/movies?title=${encodeURIComponent(searchMovie)}`);
     }
@@ -29,11 +29,15 @@ const Landing = () => {
           <span style={{ color: "#02439f" }}>BLINKER</span>
         </h2>
         <div className="input-wrapper">
-            <input type="text" placeholder="Search by Name" 
+          <form onSubmit={handleSearch}>
+            <input 
+            type="text" 
+            placeholder="Search by Name" 
             value={searchMovie}
             onChange={(event) => setSearchMovie(event.target.value)}
             onKeyDown={onSearchKeyPress}
             />
+            </form>
        
           <a href="/movies">
               <i className="fa-solid fa-magnifying-glass">
