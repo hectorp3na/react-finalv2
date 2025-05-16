@@ -96,7 +96,7 @@ const Movies = () => {
               </div>
             ))
           ) : (
-            <p>No movies found.</p>
+            <p className="no__movie">No movies found.</p>
           )}
         </div>
       </div>
