@@ -1,14 +1,22 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import BuildingLogo from "../assets/a56658f2-8d1c-4c50-9134-9d073140ffa1.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
 const Landing = () => {
   const [searchMovie, setSearchMovie] = useState("");
+  const navigate = useNavigate();
 
-  function onSearchKeyPress(key) {
-    if (key === "Enter") {
-      onSearchKeyPress();
+  function handleSearch() {
+    if (searchMovie.trim()) {
+      navigate(`/movies?title=${encodeURIComponent(searchMovie)}`);
+    }
+  }
+
+  function onSearchKeyPress(event) {
+    if (event.key === "Enter") {
+      handleSearch();
     }
   }
 
@@ -24,7 +32,7 @@ const Landing = () => {
             <input type="text" placeholder="Search by Name" 
             value={searchMovie}
             onChange={(event) => setSearchMovie(event.target.value)}
-            onKeyDown={(event) => onSearchKeyPress(event.key)}
+            onKeyDown={onSearchKeyPress}
             />
        
           <a href="/movies">

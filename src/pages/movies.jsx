@@ -16,7 +16,7 @@ const Movies = () => {
     return sorted;
   };
 
-  const displayedMovies = getSortedMovies().slice(0, 6); 
+  const displayedMovies = getSortedMovies().slice(0, 8); 
   
   useEffect(() => {
     const fetchMovies = async () => {

@@ -39,9 +39,11 @@ const Nav = () => {
         </li>
       </ul>
 
+      {!menuVisible && (
       <button className="btn__menu" onClick={openMenu}>
         <FontAwesomeIcon icon={faBars} />
       </button>
+      )}
 
       {menuVisible && (
         <div className={`menu__backdrop ${menuOpen ? "slide-in" : "slide-out"}`}>
