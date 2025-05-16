@@ -33,7 +33,7 @@ const Landing = () => {
 
         <button
           className="fa-solid fa-magnifying-glass"
-          type="button"
+          type="submit"
           onClick={handleSearch}
           aria-label="Search movies"
           style={{
