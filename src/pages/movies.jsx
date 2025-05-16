@@ -1,25 +1,18 @@
 import React, { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
-  const [searchMovie, setSearchMovie] = useState("");
   const [sortOrder, setSortOrder] = useState("");
 
+  const [searchParams, setSearchParams] = useSearchParams();
+  const searchMovie = searchParams.get("title") || "";
 
-  const getSortedMovies = () => {
-    let sorted = [...movies];
-    if (sortOrder === "Oldest_To_Newest") {
-      sorted.sort((a, b) => parseInt(a.Year) - parseInt(b.Year));
-    } else if (sortOrder === "Newest_To_Oldest") {
-      sorted.sort((a, b) => parseInt(b.Year) - parseInt(a.Year));
-    }
-    return sorted;
-  };
+  const [searchInput, setSearchInput] = useState(searchMovie);
 
-  const displayedMovies = getSortedMovies().slice(0, 8); 
-  
   useEffect(() => {
     const fetchMovies = async () => {
+      if (!searchMovie.trim()) return;
       try {
         const response = await fetch(
           `https://www.omdbapi.com/?apikey=f9f11fce&s=${searchMovie}`
@@ -32,11 +25,30 @@ const Movies = () => {
         }
       } catch (error) {
         console.error("Error fetching movies:", error);
+        setMovies([]);
       }
     };
 
     fetchMovies();
   }, [searchMovie]);
+
+  const getSortedMovies = () => {
+    let sorted = [...movies];
+    if (sortOrder === "Oldest_To_Newest") {
+      sorted.sort((a, b) => parseInt(a.Year) - parseInt(b.Year));
+    } else if (sortOrder === "Newest_To_Oldest") {
+      sorted.sort((a, b) => parseInt(b.Year) - parseInt(a.Year));
+    }
+    return sorted;
+  };
+
+  const displayedMovies = getSortedMovies().slice(0, 8);
+
+  const handleInputChange = (e) => {
+    const value = e.target.value;
+    setSearchInput(value);
+    setSearchParams({ title: value });
+  };
 
   return (
     <div className="overlay">
@@ -48,7 +60,8 @@ const Movies = () => {
             id="search-input"
             className="search-input"
             placeholder="Search for movies..."
-            onChange={(e) => setSearchMovie(e.target.value)}
+            value={searchInput}
+            onChange={handleInputChange}
           />
           <svg
             className="search-icon"
@@ -68,7 +81,8 @@ const Movies = () => {
 
         <div className="movie__header">
           <h2 className="section__title">
-            All <span className="blue">Movies:</span>
+            Results for:{" "}
+            <span className="blue">{searchMovie || "No movie entered"}</span>
           </h2>
           <select
             id="filter"
@@ -89,10 +103,10 @@ const Movies = () => {
           {displayedMovies.length > 0 ? (
             displayedMovies.map((movie) => (
               <div className="movie" key={movie.imdbID}>
-                 <h3>{movie.Title}</h3>
-                 <p>{movie.Year}</p>
+                <h3>{movie.Title}</h3>
+                <p>{movie.Year}</p>
                 <img src={movie.Poster} alt={movie.Title} />
-               
+
               </div>
             ))
           ) : (
