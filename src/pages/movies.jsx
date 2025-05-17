@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
@@ -101,13 +102,17 @@ const Movies = () => {
       <div id="data-container">
         <div className="movies">
           {displayedMovies.length > 0 ? (
-            displayedMovies.map((movie) => (
-              <div className="movie" key={movie.imdbID}>
-                <h3>{movie.Title}</h3>
-                <p>{movie.Year}</p>
-                <img src={movie.Poster} alt={movie.Title} />
-
-              </div>
+           displayedMovies.map((movie) => (
+            <Link
+              to={`/movies/${movie.imdbID}`}
+              state={{ movie }}
+              className="movie"
+              key={movie.imdbID}
+            >
+              <img src={movie.Poster} alt={movie.Title} />
+              <h3>{movie.Title}</h3>
+              <p>{movie.Year}</p>
+            </Link>
             ))
           ) : (
             <p className="no__movie">No movies found.</p>
