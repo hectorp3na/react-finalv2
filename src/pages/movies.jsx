@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [sortOrder, setSortOrder] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const [searchParams, setSearchParams] = useSearchParams();
   const searchMovie = searchParams.get("title") || "";
@@ -14,19 +15,27 @@ const Movies = () => {
   useEffect(() => {
     const fetchMovies = async () => {
       if (!searchMovie.trim()) return;
+
+      setLoading(true);
+
       try {
+        setLoading(true);
         const response = await fetch(
           `https://www.omdbapi.com/?apikey=f9f11fce&s=${searchMovie}`
         );
         const data = await response.json();
-        if (data.Search) {
-          setMovies(data.Search);
-        } else {
-          setMovies([]);
-        }
+        setTimeout(() => {
+          if (data.Search) {
+            setMovies(data.Search);
+          } else {
+            setMovies([]);
+          }
+          setLoading(false);
+        }, 1000); 
       } catch (error) {
         console.error("Error fetching movies:", error);
         setMovies([]);
+        setLoading(false);
       }
     };
 
@@ -49,6 +58,16 @@ const Movies = () => {
     const value = e.target.value;
     setSearchInput(value);
     setSearchParams({ title: value });
+  };
+
+  const renderSkeletons = (count = 8) => {
+    return Array.from({ length: count }).map((_, index) => (
+      <div className="movie skeleton" key={index}>
+        <div className="skeleton-img" />
+        <div className="skeleton-title" />
+        <div className="skeleton-year" />
+      </div>
+    ));
   };
 
   return (
@@ -100,26 +119,28 @@ const Movies = () => {
       </section>
 
       <div id="data-container">
+        
         <div className="movies">
-          {displayedMovies.length > 0 ? (
-           displayedMovies.map((movie) => (
-            <Link
-              to={`/movies/${movie.imdbID}`}
-              state={{ movie }}
-              className="movie"
-              key={movie.imdbID}
-            >
-              <img src={movie.Poster} alt={movie.Title} />
-              <h3>{movie.Title}</h3>
-              <p>{movie.Year}</p>
-            </Link>
-            ))
-          ) : (
-            <p className="no__movie">No movies found.</p>
-          )}
+        {loading
+            ? renderSkeletons()
+            : displayedMovies.length > 0
+              ? displayedMovies.map((movie) => (
+                  <Link
+                    to={`/movies/${movie.imdbID}`}
+                    state={{ movie }}
+                    className="movie"
+                    key={movie.imdbID}
+                  >
+                    <img src={movie.Poster} alt={movie.Title} />
+                    <h3>{movie.Title}</h3>
+                    <p>{movie.Year}</p>
+                  </Link>
+                ))
+              : <p className="no__movie">No movies found.</p>}
         </div>
       </div>
     </div>
   );
 };
+
 export default Movies;

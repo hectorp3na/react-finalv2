@@ -4,6 +4,7 @@ import Nav from './components/Nav';
 import Home from './pages/home';
 import Movies from './pages/movies';
 import Footer from './components/Footer';
+import MovieInfo from './pages/MovieInfo';
 
 function App() {
   return (
@@ -12,7 +13,8 @@ function App() {
     <Nav />
     <Routes>
       <Route path='/'  element={<Home />} />
-      <Route path='/movies'  element={<Movies />} />
+      <Route path='/movies' exact element={<Movies />} />
+      <Route path="/movies/:id" element={<MovieInfo  />} />
     </Routes>
     <Footer />
       </div>

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import logo from "../assets/b7438e6d-4fe4-46d1-9917-4a204a998d59.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 const Nav = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -25,17 +26,17 @@ const Nav = () => {
       </div>
       <ul className="navlinks li">
         <li>
-          <a href="/" style={{ color: "#02439f" }}>
+          <Link to ="/" style={{ color: "#02439f" }}>
             Home
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="/movies">Search Movies</a>
+          <Link to ="/movies">Search Movies</Link>
         </li>
         <li>
-          <a href="/" className="contact-btn">
+          <Link to="/" className="contact-btn">
             Contact
-          </a>
+          </Link>
         </li>
       </ul>
 
@@ -54,19 +55,19 @@ const Nav = () => {
           </button>
           <ul className="menu__links">
             <li className="menu__list">
-              <a href="/" className="menu__link" onClick={closeMenu}>
+              <Link to ="/" className="menu__link" onClick={closeMenu}>
                 Home
-              </a>
+              </Link>
             </li>
             <li className="menu__list">
-              <a href="/movies" className="menu__link" onClick={closeMenu}>
+              <Link to ="/movies" className="menu__link" onClick={closeMenu}>
                 Search Movies
-              </a>
+              </Link>
             </li>
             <li className="menu__list">
-              <a href="/" className="menu__link" onClick={closeMenu}>
+              <Link to ="/" className="menu__link" onClick={closeMenu}>
                 Contact
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
